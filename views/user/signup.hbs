@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-7">
+      <br>
+      <h4>CREATE ACCOUNT</h4>
+      <p>Please complete the fields to continue</p>
+      <div class="alert alert-danger" {{# if noError}} style="display: none;" {{/ if}} role="alert">
+        {{messages}}
+      </div>
+      <form class="needs-validation" action="/signup" method="post" id="reg-form" novalidate>
+        <div id="accordion">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Customer information
+                </button>
+              </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+              <br>
+              <div class="form-row justify-content-center ">
+                <div class="col-md-5">
+                  <label for="validationCustom01">First name</label>
+                  <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="" name="fname">
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="validationCustom02">Last name</label>
+                  <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="" required name="lname">
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+              </div>
+              <div class="form-row justify-content-center">
+                <div class="col-md-11">
+                  <label for="address01">Address</label>
+                  <input type="text" class="form-control" id="address01" placeholder="1234 Main St" value="" required name="address">
+                  <div class="invalid-feedback">
+                    Please provide a valid address
+                  </div>
+                </div>
+              </div>
+              <div class="form-row justify-content-center">
+                <div class="col-md-11">
+                  <label for="email01">E-mail</label>
+                  <input type="email" class="form-control" id="email01" placeholder="user@provider.com" value="" required name="email">
+                  <div class="invalid-feedback">
+                    Please provide a valid E-mail
+                  </div>
+                </div>
+              </div>
+              <div class="form-row justify-content-center">
+                <div class="col-md-11">
+                  <label for="phone">Phone number</label>
+                  <input type="number" class="form-control" id="number01" placeholder="55545653225" value="" required name="phone">
+                  <div class="invalid-feedback">
+                    Please provide a valid number
+                  </div>
+                </div>
+              </div>
+              <div class="form-row justify-content-center">
+                <div class="col-md-5">
+                  <label for="validationCustom03">City</label>
+                  <input type="text" class="form-control" id="validationCustom03" placeholder="City" required name="city">
+                  <div class="invalid-feedback">
+                    Please provide a valid city.
+                  </div>
+                </div>
+                <div class="col-md-3 ">
+                  <label for="validationCustom04">State</label>
+                  <input type="text" class="form-control" id="validationCustom04" placeholder="State" required name="state">
+                  <div class="invalid-feedback">
+                    Please provide a valid state.
+                  </div>
+                </div>
+                <div class="col-md-3 ">
+                  <label for="validationCustom05">Zip</label>
+                  <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required name="zip">
+                  <div class="invalid-feedback">
+                    Please provide a valid zip.
+                  </div>
+                </div>
+              </div>
+              <br>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        <button class="btn btn-primary" type="submit">Create account</button>
+      </form>
+    </div>
+    <br>
+  </div>
+  <br>
+</div>
+
+<script type="text/javascript" src="/javascripts/script.js"></script>

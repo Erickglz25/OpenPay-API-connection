@@ -1,12 +1,16 @@
 var express = require('express');
 var path = require('path');
+require('dotenv').config();
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var exphbs  = require('express-handlebars');
+var session = require('express-session');
+var flash = require('connect-flash');
+var validator = require('express-validator');
 
-var index = require('./routes/index');
+var routes = require('./routes/index');
 
 var app = express();
 
@@ -22,8 +26,19 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(validator());
+app.use(
+    session({
+        //secret: process.env.SSECRET,
+        //name: process.env.SNAME,
+        secret:'PRUEBA',
+        resave: false,
+        saveUninitialized: false,
+        cookie: { maxAge: 60*60*1000}
+    }));
+app.use(flash());
 
-app.use('/', index);
+app.use('/', routes);
 
 
 // catch 404 and forward to error handler
